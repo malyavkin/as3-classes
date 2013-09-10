@@ -99,18 +99,46 @@ package com.am_devcorp.mathtricks
 			result[1] = (((j2 - j0) * (i1 - i0) - (i2 - i0) * (j1 - j0)) / ((i3 - i2) * (j1 - j0) - (j3 - j2) * (i1 - i0)));
 			return result
 		}
-		public static function minProp(coefficient:Function, obj:Array):uint
+		
+		/**
+		 * 
+		 * @param	prop
+		 * @param	upon must be Array or Vector
+		 * @return
+		 * 
+		 */
+		public static function Min(prop:Function, upon:*):Array
 		{
+			if (!upon["length"]) {
+				throw new ArgumentError("upon...")
+			}
 			var minIndex:uint = 0
-			for (var i:int = 1; i < obj.length; i++) 
+			for (var i:int = 1; i < upon.length; i++) 
 			{
-				if (coefficient(obj[i]) < coefficient(obj[minIndex])) 
+				if (prop(upon[i]) < prop(upon[minIndex])) 
 				{
 					minIndex = i
 				}
 			}
-			return minIndex
+			return [minIndex,prop(upon[minIndex])]
 		}
+		public static function Max(prop:Function, upon:*):Array
+		{
+			if (!upon["length"]) {
+				throw new ArgumentError("upon...")
+			}
+			var maxIndex:uint = 0
+			var value:int
+			for (var i:int = 1; i < upon.length; i++) 
+			{
+				if (prop(upon[i]) > prop(upon[maxIndex])) 
+				{
+					maxIndex = i
+				}
+			}
+			return [maxIndex,prop(upon[maxIndex])]
+		}
+		
 		
 	}
 
