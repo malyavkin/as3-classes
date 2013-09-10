@@ -9,7 +9,7 @@ package com.am_devcorp.algo.processing.TeX {
 		 * @param	s TeX-formatted string
 		 * @return  TeX_Token structure 
 		 */
-		public function Parse(s:String):TeX_Token {
+		public static function Parse(s:String):TeX_Token {
 			return new TeX_Parser(s).getRoot();
 		}
 		
