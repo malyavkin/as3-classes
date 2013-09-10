@@ -7,24 +7,40 @@ package com.am_devcorp.algo.graphics {
      */
     public class IntPoint {
         
-        public var x:int
-        public var y:int
+        private var _x:int
+        private var _y:int
         
         public function get as_point():Point {
-            return new Point(x, y)
+            return new Point(_x, _y)
         }
         public function get as_array():Array {
-            return [x, y]
+            return [_x, _y]
         }
         public function get copy():IntPoint{
-            return new IntPoint(x,y)
+            return new IntPoint(_x,_y)
         }
+		
+		public function get x():int {
+			return _x;
+		}
+		
+		public function set x(value:int):void {
+			_x = value;
+		}
+		
+		public function get y():int {
+			return _y;
+		}
+		
+		public function set y(value:int):void {
+			_y = value;
+		}
         public function IntPoint(x:int = 0, y:int = 0) {
-            this.x = x
-            this.y = y
+            this._x = x
+            this._y = y
         }
 		public function toString():String {
-			return "[x="+x.toString()+";y="+y.toString()+"]"
+			return "[x="+_x.toString()+";y="+_y.toString()+"]"
 		}
     }
 
